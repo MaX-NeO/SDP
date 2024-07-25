@@ -10,6 +10,7 @@ import AdminLayout from './layout/AdminLayout'
 import AdminDashboard from './pages/Admin/AdminDashboard'
 import NotFound from './pages/Shared/NotFound'
 import HomeLayout from './layout/HomeLayout'
+import AdminUsers from './pages/Admin/AdminUsers'
 
 
 
@@ -23,7 +24,6 @@ const App = () => {
                         <Route path='/' element={<Home />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />
-                        <Route path='*' element={<NotFound />} />
                     </Route>
 
                     <Route element={<UserLayout />}>
@@ -32,8 +32,10 @@ const App = () => {
 
                     <Route element={<AdminLayout />}>
                         <Route path='/admin/dashboard' element={<AdminDashboard />} />
+                        <Route path='/admin/users' element={<AdminUsers />} />
                     </Route>
 
+                    <Route path='*' element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
 

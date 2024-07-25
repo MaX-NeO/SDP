@@ -9,7 +9,9 @@ const AdminLayout = () => {
       <Leftbar />
       <div className='h-screen w-5/6 flex justify-center items-center flex-col'>
         <Topbar />
+        <div className='h-[92vh] w-full'>
         <Outlet />
+        </div>
       </div>
     </div>
   )
