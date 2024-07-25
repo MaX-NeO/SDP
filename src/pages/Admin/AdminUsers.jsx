@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { BellRing, Check, Plus } from "lucide-react"
+import { BellRing, Check, Edit, Plus, TrashIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -82,15 +82,13 @@ const AdminUsers = () => {
     },
   ]
   return (
-    <>
-      <Card>
+    <div className='m-1 p-4'>
+      <Card className='shadow-sm shadow-primary'>
         <CardHeader className='w-full flex flex-row justify-between items-center'>
           <CardTitle>Users</CardTitle>
-          {/* <SheetTrigger> */}
-          <Button onClick={()=>setOpen(!open)}>
+          <Button onClick={() => setOpen(!open)}>
             <Plus className='h-10 w-10 mr-2' /> Add
           </Button>
-          {/* </SheetTrigger> */}
         </CardHeader>
         <CardContent>
           <Table>
@@ -99,7 +97,8 @@ const AdminUsers = () => {
                 <TableHead className="w-[100px]">Invoice</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Method</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
+                <TableHead >Amount</TableHead>
+                <TableHead className="flex justify-center ">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -108,7 +107,13 @@ const AdminUsers = () => {
                   <TableCell className="font-medium">{invoice.invoice}</TableCell>
                   <TableCell>{invoice.paymentStatus}</TableCell>
                   <TableCell>{invoice.paymentMethod}</TableCell>
-                  <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                  <TableCell >{invoice.totalAmount}</TableCell>
+                  <TableCell>
+                    <span className='w-full h-full flex justify-center items-center gap-3'>
+                      <Edit className='h-8 w-8 p-1 text-blue-500 cursor-pointer hover:bg-blue-500 hover:text-background rounded-md' />
+                      <TrashIcon className='h-8 w-8 p-1 text-red-500 cursor-pointer hover:bg-red-500 hover:text-background rounded-md' />
+                    </span>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -119,32 +124,41 @@ const AdminUsers = () => {
       <Sheet open={open}>
         <SheetContent>
           <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
-            <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
-            </SheetDescription>
+            <SheetTitle>Add User</SheetTitle>
           </SheetHeader>
           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col items-start gap-4">
               <Label htmlFor="name" className="text-right">
                 Name
               </Label>
-              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+              <Input id="name" className="col-span-3" />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col items-start gap-4">
               <Label htmlFor="username" className="text-right">
                 Username
               </Label>
-              <Input id="username" value="@peduarte" className="col-span-3" />
+              <Input id="username" className="col-span-3" />
+            </div>
+            <div className="flex flex-col items-start gap-4">
+              <Label htmlFor="email" className="text-right">
+                Email
+              </Label>
+              <Input id="email" className="col-span-3" />
+            </div>
+            <div className="flex flex-col items-start gap-4">
+              <Label htmlFor="password" className="text-right">
+                Password
+              </Label>
+              <Input id="password" className="col-span-3" />
             </div>
           </div>
           <SheetFooter className='flex flex-col flex-1'>
-              <Button className='w-1/2 bg-destructive hover:bg-destructive/80' onClick={()=>setOpen(!open)}>Cancle</Button>
-              <Button type="submit" className='w-1/2'>Save changes</Button>
+            <Button className='w-1/2 outline bg-red-400/90 hover:bg-red-400' onClick={() => setOpen(!open)}>Cancel</Button>
+            <Button type="submit" className='w-1/2'>Save changes</Button>
           </SheetFooter>
         </SheetContent>
       </Sheet>
-    </>
+    </div>
   )
 }
 

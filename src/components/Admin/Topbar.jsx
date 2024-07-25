@@ -4,13 +4,13 @@ import { ModeToggle } from '../mode-toggle'
 
 const Topbar = () => {
     return (
-        <div className='h-[8vh] w-full bg-primary/5 flex justify-center items-center'>
-            <div className='w-[90%] flex items-center justify-end gap-4'>
+        <div className='h-[6vh] w-full flex justify-center items-center shadow-sm shadow-primary'>
+            <div className='w-[95%] h-full flex items-center justify-end gap-4'>
+                <ModeToggle/>
                 <Avatar>
-                    <AvatarImage src="https://github.com/shadcxn.png" alt="@shadcn" />
+                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
                     <AvatarFallback>MM</AvatarFallback>
                 </Avatar>
-                <ModeToggle />
             </div>
         </div>
     )
